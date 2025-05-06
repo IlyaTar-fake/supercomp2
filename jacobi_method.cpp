@@ -77,7 +77,7 @@ int main() {
 			std::swap(x_prev50[i], x50[i]);
 		}
 		t2 = clock();
-		dt[0][i] = (static_cast<double>(t2 - t1) / CLOCKS_PER_SEC) * 1000000;
+		dt[0][i] = static_cast<double>(t2 - t1) / CLOCKS_PER_SEC;
 
 		for (int j = 0; j < 50; ++j) {
 			for (int k = 0; k < 50; ++k) {
@@ -94,7 +94,9 @@ int main() {
 	}
 	
 	for (int j = 0; j < 5; ++j) {
-		cout << "Невязка: " << res[0][j] << ", " << "время: " << dt[0][j] << endl;
+		cout << "Residual: " << res[0][j] << ", " << "time: ";
+		printf("%.6lf", dt[0][j]);
+		cout << endl;
 	}
 	cout << endl;
 
@@ -135,7 +137,7 @@ int main() {
 			std::swap(x_prev100[i], x100[i]);
 		}
 		t2 = clock();
-		dt[1][i] = (static_cast<double>(t2 - t1) / CLOCKS_PER_SEC) * 1000000;
+		dt[1][i] = static_cast<double>(t2 - t1) / CLOCKS_PER_SEC;
 
 		for (int j = 0; j < 100; ++j) {
 			for (int k = 0; k < 100; ++k) {
@@ -152,7 +154,9 @@ int main() {
 	}
 
 	for (int j = 0; j < 5; ++j) {
-		cout << "Невязка: " << res[1][j] << ", " << "время: " << dt[1][j] << endl;
+		cout << "Residual: " << res[1][j] << ", " << "time: ";
+		printf("%.6lf", dt[1][j]);
+		cout << endl;
 	}
 	cout << endl;
 
@@ -191,7 +195,7 @@ int main() {
 			std::swap(x_prev500[i], x500[i]);
 		}
 		t2 = clock();
-		dt[2][i] = (static_cast<double>(t2 - t1) / CLOCKS_PER_SEC) * 1000000;
+		dt[2][i] = static_cast<double>(t2 - t1) / CLOCKS_PER_SEC;
 
 		for (int j = 0; j < 500; ++j) {
 			for (int k = 0; k < 500; ++k) {
@@ -208,7 +212,9 @@ int main() {
 	}
 
 	for (int j = 0; j < 5; ++j) {
-		cout << "Невязка: " << res[2][j] << ", " << "время: " << dt[2][j] << endl;
+		cout << "Residual: " << res[2][j] << ", " << "time: ";
+		printf("%.6lf", dt[2][j]);
+		cout << endl;
 	}
 	cout << endl;
 
@@ -247,7 +253,7 @@ int main() {
 			std::swap(x_prev2000[i], x2000[i]);
 		}
 		t2 = clock();
-		dt[3][i] = (static_cast<double>(t2 - t1) / CLOCKS_PER_SEC) * 1000000;
+		dt[3][i] = static_cast<double>(t2 - t1) / CLOCKS_PER_SEC;
 
 		for (int j = 0; j < 2000; ++j) {
 			for (int k = 0; k < 2000; ++k) {
@@ -264,7 +270,9 @@ int main() {
 	}
 	
 	for (int j = 0; j < 5; ++j) {
-		cout << "Невязка: " << res[3][j] << ", " << "время: " << dt[3][j] << endl;
+		cout << "Residual: " << res[3][j] << ", " << "time: ";
+		printf("%.6lf", dt[3][j]);
+		cout << endl;
 	}
 
 	return 0;
