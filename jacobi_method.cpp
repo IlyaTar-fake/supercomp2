@@ -2,8 +2,7 @@
 #include <iostream>
 #include <math.h>
 #include <locale.h>
-#include <time.h>
-#include <chrono>
+#include <ctime>
 
 
 using namespace std;
@@ -42,13 +41,12 @@ int main() {
 		
 	double norm50 = 1, norm100 = 1, norm500 = 1, norm2000 = 1, res[4][5], cur;
 	double dt[4][5];
-	auto t1 = std::chrono::high_resolution_clock::now();
-	auto t2 = std::chrono::high_resolution_clock::now();
-	auto duration = std::chrono::duration_cast<std::chrono::microseconds>(t2 - t1);
+	clock_t t1 = clock();
+	clock_t t2 = clock();
 
 	// 50
 	for (i = 0; i < 5; ++i) {
-		t1 = std::chrono::high_resolution_clock::now();
+		t1 = clock();
 
 		norm50 = 1;
 		while (norm50 >= eps) {
@@ -78,10 +76,8 @@ int main() {
 			}
 			std::swap(x_prev50[i], x50[i]);
 		}
-		t2 = std::chrono::high_resolution_clock::now();
-		duration = std::chrono::duration_cast<std::chrono::microseconds>(t2 - t1);
-
-		dt[0][i] = duration.count();
+		t2 = clock();
+		dt[0][i] = (static_cast<double>(t2 - t1) / CLOCKS_PER_SEC) * 1000000;
 
 		for (int j = 0; j < 50; ++j) {
 			for (int k = 0; k < 50; ++k) {
@@ -106,7 +102,7 @@ int main() {
 
 	// 100
 	for (i = 0; i < 5; ++i) {
-		t1 = std::chrono::high_resolution_clock::now();
+		t1 = clock();
 
 		norm100 = 1;
 		while (norm100 >= eps) {
@@ -138,10 +134,8 @@ int main() {
 
 			std::swap(x_prev100[i], x100[i]);
 		}
-		t2 = std::chrono::high_resolution_clock::now();
-		duration = std::chrono::duration_cast<std::chrono::microseconds>(t2 - t1);
-
-		dt[1][i] = duration.count();
+		t2 = clock();
+		dt[1][i] = (static_cast<double>(t2 - t1) / CLOCKS_PER_SEC) * 1000000;
 
 		for (int j = 0; j < 100; ++j) {
 			for (int k = 0; k < 100; ++k) {
@@ -164,7 +158,7 @@ int main() {
 
 	// 500
 	for (i = 0; i < 5; ++i) {
-		t1 = std::chrono::high_resolution_clock::now();
+		t1 = clock();
 
 		norm500 = 1;
 		while (norm500 >= eps) {
@@ -196,10 +190,8 @@ int main() {
 
 			std::swap(x_prev500[i], x500[i]);
 		}
-		t2 = std::chrono::high_resolution_clock::now();
-		duration = std::chrono::duration_cast<std::chrono::microseconds>(t2 - t1);
-
-		dt[2][i] = duration.count();
+		t2 = clock();
+		dt[2][i] = (static_cast<double>(t2 - t1) / CLOCKS_PER_SEC) * 1000000;
 
 		for (int j = 0; j < 500; ++j) {
 			for (int k = 0; k < 500; ++k) {
@@ -222,7 +214,7 @@ int main() {
 
 	// 2000
 	for (i = 0; i < 5; ++i) {
-		t1 = std::chrono::high_resolution_clock::now();
+		t1 = clock();
 
 		norm2000 = 1;
 		while (norm2000 >= eps) {
@@ -254,10 +246,8 @@ int main() {
 
 			std::swap(x_prev2000[i], x2000[i]);
 		}
-		t2 = std::chrono::high_resolution_clock::now();
-		duration = std::chrono::duration_cast<std::chrono::microseconds>(t2 - t1);
-
-		dt[3][i] = duration.count();
+		t2 = clock();
+		dt[3][i] = (static_cast<double>(t2 - t1) / CLOCKS_PER_SEC) * 1000000;
 
 		for (int j = 0; j < 2000; ++j) {
 			for (int k = 0; k < 2000; ++k) {
